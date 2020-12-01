@@ -1,4 +1,4 @@
-// Зробив стрілочними функціями на github (без return, в 1 рядок та з присвоєнням const через Function Expression)
+// Зробив 1 і 2 стрілочними функціями на github (без return, в 1 рядок та з присвоєнням const через Function Expression)
 
 //https://www.codewars.com/kata/571edd157e8954bab500032d/train/javascript
 
@@ -10,7 +10,7 @@ const equal3 = () => v1 * v5;
 const equal4 = () => v4 / v5;
 const equal5 = () => v6 % v3;
 
-https://www.codewars.com/kata/571edea4b625edcb51000d8e/train/javascript
+//https://www.codewars.com/kata/571edea4b625edcb51000d8e/train/javascript
 
 var a1 = "A",
   a2 = "a",
@@ -31,3 +31,13 @@ const answer1 = () => "no";
 const answer2 = () => "no";
 const answer3 = () => "yes";
 
+//https://www.codewars.com/kata/571f1eb77e8954a812000837/train/javascript
+
+function animal(obj) {
+  let objHusky = {
+    name: "dog",
+    legs: 4,
+    color: "white",
+  };
+  return `This ${obj.color} ${obj.name} has ${obj.legs} legs.`;
+}

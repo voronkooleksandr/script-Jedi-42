@@ -36,3 +36,23 @@ function trueOrFalse(val) {
 function saleHotdogs(n) {
   return n < 5 ? n * 100 : n >= 5 && n < 10 ? n * 95 : n * 90;
 }
+
+// 3. https://www.codewars.com/kata/572059afc2f4612825000d8a/train/javascript
+
+function howManydays(month) {
+  var days;
+  switch (month) {
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      days = 30;
+      break;
+    case 2:
+      days = 28;
+      break;
+    default:
+      days = 31;
+  }
+  return days;
+}

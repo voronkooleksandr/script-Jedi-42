@@ -18,6 +18,7 @@ function padIt(Oleksandr, n) {
 }
 
 // 10. https://www.codewars.com/kata/5721a78c283129e416000999/train/javascript
+// треба було звичайним циклом for! У мене for..of вийшло якось зрозуміліше для мене
 
 function pickIt(arr) {
   let odd = [],
@@ -47,4 +48,19 @@ function grabDoll(dolls) {
     }
   }
   return bag;
+}
+
+// 12. https://www.codewars.com/kata/5722b3f0bd5583cf44001000/train/javascript
+
+function giveMeFive(obj) {
+  var five = [];
+  for (key in obj) {
+    if (key.length === 5) {
+      five.push(key);
+    }
+    if (obj[key].length === 5) {
+      five.push(obj[key]);
+    }
+  }
+  return five;
 }

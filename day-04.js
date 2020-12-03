@@ -31,3 +31,20 @@ function pickIt(arr) {
   }
   return [odd, even];
 }
+
+// 11. https://www.codewars.com/kata/5721c189cdd71194c1000b9b/train/javascript
+// в рядок 42 prettier чомусь фігурну дужку дає але я б її лишив в кінці 41 рядка..йому видніше думаю)
+
+function grabDoll(dolls) {
+  var bag = [];
+  for (let i = 0; i < dolls.length; i++) {
+    if (dolls[i] != "Hello Kitty" && dolls[i] != "Barbie doll") continue;
+    {
+      while (bag.length !== 3) {
+        bag.push(dolls[i]);
+        break;
+      }
+    }
+  }
+  return bag;
+}

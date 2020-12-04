@@ -51,7 +51,7 @@ function grabDoll(dolls) {
 // 12. https://www.codewars.com/kata/5722b3f0bd5583cf44001000/train/javascript
 
 function giveMeFive(obj) {
-  var five = [];
+  let five = [];
   for (key in obj) {
     if (key.length === 5) {
       five.push(key);

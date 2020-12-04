@@ -9,3 +9,18 @@ function bonusTime(salary, bonus) {
   }
   return "£" + money.toString();
 }
+
+// https://www.codewars.com/kata/5a58d889880385c2f40000aa/train/javascript
+
+function automorphic(n) {
+  let len = n.toString().length;
+  let power = Math.pow(n, 2).toString().slice(-len);
+  return n == power ? "Automorphic" : "Not!!";
+}
+
+// https://www.codewars.com/kata/is-this-my-tail/train/javascript
+// якщо без стрілочної функції, то також має зарахуватися..не дублюю, хоча ES6 не проти зробити все в 1 рядок :)
+
+function correctTail(body, tail) {
+  return body.slice(-1) === tail[0] ? true : false;
+}

@@ -1,9 +1,8 @@
 // 9. https://www.codewars.com/kata/57216d4bcdd71175d6000560/train/javascript
 
-function padIt(Oleksandr, n) {
+function padIt(str, n) {
   let i = 0;
-  let result = [Oleksandr];
-
+  let result = [str];
   while (n > i) {
     if (i % 2 === 0) {
       result.unshift("*");
@@ -13,7 +12,6 @@ function padIt(Oleksandr, n) {
       i++;
     }
   }
-
   return result.join("");
 }
 

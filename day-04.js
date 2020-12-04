@@ -35,7 +35,7 @@ function pickIt(arr) {
 // в рядок 42 prettier чомусь фігурну дужку дає але я б її лишив в кінці 41 рядка..йому видніше думаю)
 
 function grabDoll(dolls) {
-  var bag = [];
+  let bag = [];
   for (let i = 0; i < dolls.length; i++) {
     if (dolls[i] != "Hello Kitty" && dolls[i] != "Barbie doll") continue;
     {

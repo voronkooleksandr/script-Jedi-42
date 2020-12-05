@@ -8,3 +8,9 @@ function unusualFive() {
 // https://www.codewars.com/kata/is-he-gonna-survive/train/javascript
 
 const hero = (bullets, dragons) => bullets >= dragons * 2;
+
+// https://www.codewars.com/kata/maximum-multiple/train/javascript
+
+function maxMultiple(divisor, bound) {
+  return bound - (bound % divisor);
+}

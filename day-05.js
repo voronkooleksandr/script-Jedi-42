@@ -1,7 +1,7 @@
 // https://www.codewars.com/kata/56f6ad906b88de513f000d96/train/javascript
 
 function bonusTime(salary, bonus) {
-  let money = 0;
+  const money = 0;
   if (bonus === true) {
     money = salary * 10;
   } else {
@@ -13,8 +13,8 @@ function bonusTime(salary, bonus) {
 // https://www.codewars.com/kata/5a58d889880385c2f40000aa/train/javascript
 
 function automorphic(n) {
-  let len = n.toString().length;
-  let power = Math.pow(n, 2).toString().slice(-len);
+  const len = n.toString().length;
+  const power = Math.pow(n, 2).toString().slice(-len);
   return n == power ? "Automorphic" : "Not!!";
 }
 

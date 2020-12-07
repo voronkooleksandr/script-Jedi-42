@@ -25,3 +25,12 @@ function whatNumberIsIt(n) {
   }
   return "Input number is Number(n)";
 }
+
+// https://www.codewars.com/kata/57238ceaef9008adc7000603/train/javascript
+
+function colorOf(r, g, b) {
+  const red = String("0" + r.toString(16)).slice(-2);
+  const green = String("0" + g.toString(16)).slice(-2);
+  const blue = String("0" + b.toString(16)).slice(-2);
+  return `#${red + green + blue}`;
+}

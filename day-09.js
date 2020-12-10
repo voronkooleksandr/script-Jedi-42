@@ -19,3 +19,18 @@ function cutIt(arr) {
   }
   return cutArray;
 }
+
+// https://www.codewars.com/kata/57280481e8118511f7000ffa/train/javascript
+
+function splitAndMerge(string, separator) {
+  const arrString = string.split(" ");
+  const arrWords = [];
+  for (i = 0; i < arrString.length; i++) {
+    arrWords.push(arrString[i].split(""));
+  }
+  const arrLetters = [];
+  for (i = 0; i < arrWords.length; i++) {
+    arrLetters.push(arrWords[i].join(separator));
+  }
+  return arrLetters.join(" ");
+}

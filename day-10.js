@@ -16,21 +16,28 @@ function alienLanguage(str) {
 
 // https://www.codewars.com/kata/57284d23e81185ae6200162a/train/javascript
 
-function topSecret(str) {
+function topSecret(str){
   let chars = str.split("");
-  for (var i = 0; i < chars.length; i++) {
-    if (chars[i].charCodeAt() >= 100 && chars[i].charCodeAt() <= 123) {
+  for(var i = 0; i < chars.length; i++){
+    if(chars[i].charCodeAt() >= 100 && chars[i].charCodeAt()  <= 123){
       chars[i] = String.fromCharCode(chars[i].charCodeAt() - 3);
-    } else if (chars[i].charCodeAt() >= 97 && chars[i].charCodeAt() <= 99) {
+    }else if(chars[i].charCodeAt() >= 97 && chars[i].charCodeAt()  <= 99){
       chars[i] = String.fromCharCode(chars[i].charCodeAt() + 23);
-    } else if (chars[i].charCodeAt() >= 68 && chars[i].charCodeAt() <= 90) {
+    }else if(chars[i].charCodeAt() >= 68 && chars[i].charCodeAt()  <= 90){
       chars[i] = String.fromCharCode(chars[i].charCodeAt() - 3);
-    } else if (chars[i].charCodeAt() >= 65 && chars[i].charCodeAt() <= 67) {
+    }else if(chars[i].charCodeAt() >= 65 && chars[i].charCodeAt()  <= 67){
       chars[i] = String.fromCharCode(chars[i].charCodeAt() + 23);
     }
   }
-  return chars.join("");
+  return chars.join("") 
 }
+
+//question1: The top secret file number is...
+answer1 = "4590";
+//question2: Super agent's name is...
+answer2 = "kzaiwy";
+//question3: He stole the treasure is...
+answer3 = "Marie's husband";
 
 // https://www.codewars.com/kata/5729b103dd8bac11a900119e/train/javascript
 // працює) але сам вигляд кода мені не дуже через prettier

@@ -1,5 +1,4 @@
-// 1. Set Basics
-// https://tddbin.com/#?
+// Set Basics https://tddbin.com/#?
 
 describe("`Set` lets you store unique values of any type", function () {
   it("`Set` is a new global constructor function", function () {
@@ -34,8 +33,7 @@ describe("`Set` lets you store unique values of any type", function () {
   });
 });
 
-// 2. set.add()
-// https://tddbin.com/#?
+// set.add() https://tddbin.com/#?
 
 describe("`add()` appends a new element to the end of a Set object.", function () {
   let set;
@@ -65,5 +63,53 @@ describe("`add()` appends a new element to the end of a Set object.", function (
   });
 });
 
-// 3. set.delete()
-// https://tddbin.com/#?
+// set.delete() https://tddbin.com/#?
+
+describe("`set.delete()` deletes an element from a set", function () {
+  let set;
+  beforeEach(() => (set = new Set()));
+  describe("use `delete(<value>)` to delete an element", function () {
+    beforeEach(function () {
+      set.add("one").add("two").add("three");
+    });
+    it("`delete()` returns `true` when the element was found", function () {
+      const returns = set.delete("one");
+      assert.strictEqual(returns, true);
+    });
+    it("and the size decreases", function () {
+      set.add("one");
+      set.add("two");
+      set.add("three");
+      set.delete("three");
+      assert.equal(set.size, 2);
+    });
+  });
+  describe("if nothing was deleted (no element with the given value was found)", function () {
+    it("returns `false`", function () {
+      set.add("one");
+      set.delete("one");
+      const returns = set.delete("one");
+      assert.equal(returns, false);
+    });
+  });
+  describe("`undefined` is a valid value in a set", function () {
+    it("deleting it, when it is not in the set, returns `false` too", function () {
+      const whatToDelete = undefined;
+      assert.equal(set.delete(whatToDelete), false);
+    });
+    it("`delete()` removes it, when its in the set", function () {
+      set.add(undefined);
+      assert.equal(set.delete(), true);
+    });
+  });
+  describe("the value does NOT get casted", function () {
+    it('number 1 is different to string "1"', function () {
+      set.add(1);
+      assert.equal(set.delete("1"), false);
+    });
+  });
+});
+
+// Set API http://tddbin.com/#?kata=es6/language/set/api
+
+

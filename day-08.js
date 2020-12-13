@@ -1,13 +1,11 @@
 // https://www.codewars.com/kata/57256064856584bc47000611/train/javascript
 
 function howManySmaller(arr, n) {
-  const array = [];
+  const smallerDecimal = [];
   const decimal = n;
   for (i = 0; i < arr.length; i++)
-    if (arr[i].toFixed(2) < decimal) {
-      array.push(arr[i]);
-    }
-  return array.length;
+    if (arr[i].toFixed(2) < decimal) smallerDecimal.push(arr[i]);
+  return smallerDecimal.length;
 }
 
 // https://www.codewars.com/kata/5722fd3ab7162a3a4500031f/train/javascript

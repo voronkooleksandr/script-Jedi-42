@@ -29,3 +29,40 @@ describe("Symbol", function () {
 
 // Symbol.for() http://tddbin.com/#?kata=es6/language/symbol/for
 
+describe("`Symbol.for` for registering Symbols globally", function () {
+  it("creates a new symbol (check via `typeof`)", function () {
+    const symbolType = typeof Symbol.for("symbol");
+    assert.equal(symbolType, "symbol");
+  });
+  it("stores the symbol in a runtime-wide registry and retrieves it from there", function () {
+    const sym = Symbol.for("new symbol");
+    const sym1 = Symbol.for("new symbol");
+    assert.equal(sym, sym1);
+  });
+  it("is different to `Symbol()` which creates a symbol every time and does not store it", function () {
+    const globalSymbol = Symbol.for("new symbol");
+    const localSymbol = Symbol("symbol");
+    assert.notEqual(globalSymbol, localSymbol);
+  });
+  describe("`.toString()` on a Symbol", function () {
+    it("also contains the key given to `Symbol.for()`", function () {
+      const description = Symbol("new symbol").toString();
+      assert.equal(description, "Symbol(new symbol)");
+    });
+    describe("NOTE: the description of two different symbols", function () {
+      it("might be the same", function () {
+        const symbol1AsString = Symbol().toString();
+        const symbol2AsString = Symbol().toString();
+        assert.equal(symbol1AsString, symbol2AsString);
+      });
+      it("but the symbols are not the same!", function () {
+        const symbol1 = Symbol.for("new symbo1");
+        const symbol2 = Symbol.for("new symbo2");
+        assert.notEqual(symbol1, symbol2);
+      });
+    });
+  });
+});
+
+// Symbol.keyFor() http://tddbin.com/#?kata=es6/language/symbol/keyFor
+

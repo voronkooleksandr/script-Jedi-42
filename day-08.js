@@ -2,8 +2,9 @@
 
 function howManySmaller(arr, n) {
   const array = [];
+  const decimal = n;
   for (i = 0; i < arr.length; i++)
-    if (arr[i].toFixed(2) < n) {
+    if (arr[i].toFixed(2) < decimal) {
       array.push(arr[i]);
     }
   return array.length;

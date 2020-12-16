@@ -4,7 +4,7 @@ function howManySmaller(arr, n) {
   const smallerDecimal = [];
   const decimal = n;
   let counter = 0;
-  for (i = 0; i < arr.length; i++)
+  for (let i = 0; i < arr.length; i++)
     if (arr[i].toFixed(2) < decimal) smallerDecimal.push(arr[i]);
   return (counter = smallerDecimal.length);
 }

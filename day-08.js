@@ -3,10 +3,9 @@
 function howManySmaller(arr, n) {
   const smallerDecimal = [];
   const decimal = n;
-  let counter = 0;
   for (let i = 0; i < arr.length; i++)
     if (arr[i].toFixed(2) < decimal) smallerDecimal.push(arr[i]);
-  return (counter = smallerDecimal.length);
+  return smallerDecimal.length;
 }
 
 // https://www.codewars.com/kata/5722fd3ab7162a3a4500031f/train/javascript

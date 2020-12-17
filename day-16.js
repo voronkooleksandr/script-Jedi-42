@@ -26,3 +26,18 @@ function isolateIt(arr) {
 // #27: methods of arrayObject---filter() http://www.codewars.com/kata/573023c81add650b84000429
 
 // #28: methods of arrayObject---every() and some() http://www.codewars.com/kata/57308546bd9f0987c2000d07
+
+function mirrorImage(arr) {
+  let a = 0,
+    b = 0;
+  const result = arr.some((item, i, arr) => {
+    a = item;
+    b = arr[i + 1];
+    return String(a) === String(b).split("").reverse().join("");
+  });
+  if (result) {
+    return [a, b];
+  } else {
+    return [-1, -1];
+  }
+}

@@ -25,6 +25,17 @@ function isolateIt(arr) {
 
 // #27: methods of arrayObject---filter() http://www.codewars.com/kata/573023c81add650b84000429
 
+function countGrade(scores) {
+  return {
+    S: scores.filter((item) => item === 100).length,
+    A: scores.filter((item) => item < 100 && item >= 90).length,
+    B: scores.filter((item) => item < 90 && item >= 80).length,
+    C: scores.filter((item) => item < 80 && item >= 60).length,
+    D: scores.filter((item) => item < 60 && item >= 0).length,
+    X: scores.filter((item) => item === -1).length,
+  };
+}
+
 // #28: methods of arrayObject---every() and some() http://www.codewars.com/kata/57308546bd9f0987c2000d07
 
 function mirrorImage(arr) {

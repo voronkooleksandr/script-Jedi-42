@@ -78,4 +78,90 @@ describe("`Array.prototype.fill` can fill up an array with one value", () => {
 
 // [].find() http://tddbin.com/#?kata=es6/language/array-api/find
 
+describe("`Array.prototype.find` makes finding items in arrays easier", () => {
+  it("takes a compare function", function () {
+    const found = [true].find((item) => item === true);
+    assert.equal(found, true);
+  });
+  it("returns the first value found", function () {
+    const found = [0, 2].find((item) => item > 1);
+    assert.equal(found, 2);
+  });
+  it("returns `undefined` when nothing was found", function () {
+    const found = [1, 777, 3].find((item) => item === 2);
+    assert.equal(found, void 0);
+  });
+  it("combined with destructuring complex compares become short", function () {
+    const bob = { name: "Bob" };
+    const alice = { name: "alice" };
+    const found = [bob, alice].find(({ name }) => name === "alice");
+    assert.equal(found, alice);
+  });
+});
+
+// [].findIndex() http://tddbin.com/#?kata=es6/language/array-api/findIndex
+
+describe("`Array.prototype.findIndex` makes finding items in arrays easier", () => {
+  it("takes a compare function, returns the index where it returned true", function () {
+    const foundAt = [false, true].findIndex((item) => item === true);
+    assert.equal(foundAt, 1);
+  });
+  it("returns the first position it was found at", function () {
+    const foundAt = [0, 1, 1, 1].findIndex((item) => item === 1);
+    assert.equal(foundAt, 1);
+  });
+  it("returns `-1` when nothing was found", function () {
+    const foundAt = [1, 2, 3].findIndex((item) => item > 777);
+    assert.equal(foundAt, -1);
+  });
+  it("the findIndex callback gets the item, index and array as arguments", function () {
+    const three = 3;
+    const containsThree = (arr) => arr.indexOf(three) > -1;
+    function theSecondThree(item, index, arr) {
+      const preceedingItems = arr.slice(0, index);
+      return containsThree(preceedingItems);
+    }
+    const foundAt = [1, 1, 2, 3, 4, 3].findIndex(theSecondThree);
+    assert.equal(foundAt, 4);
+  });
+  it("combined with destructuring complex compares become short", function () {
+    const bob = { name: "Bob" };
+    const alice = { name: "Alice" };
+    const foundAt = [bob, alice].findIndex(
+      ({ name: { length } }) => length > 3
+    );
+    assert.equal(foundAt, 1);
+  });
+});
+
+// [].entries() http://tddbin.com/#?kata=es6/language/array-api/entries
+
+describe("`[].entries()` returns an iterator object with all entries", function () {
+  it("returns key+value for each element", function () {
+    const arr = ["a", "b", "c"];
+    const entriesAsArray = Array.from(arr.entries());
+    assert.deepEqual(entriesAsArray, [
+      [0, "a"],
+      [1, "b"],
+      [2, "c"],
+    ]);
+  });
+  it("empty elements contain the value `undefined`", function () {
+    const arr = ["one"];
+    arr[2] = "three";
+    const secondValue = Array.from(arr.entries())[1];
+
+    assert.deepEqual(secondValue, [1, void 0]);
+  });
+  describe("returns an iterable", function () {
+    it("has `next()` to iterate", function () {
+      const arr = ["one"];
+      const value = arr.entries().next().value;
+      assert.deepEqual(value, [0, "one"]);
+    });
+  });
+});
+
+//
+
 

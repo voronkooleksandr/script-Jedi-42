@@ -1,5 +1,4 @@
 // TDD Bin - Template Strings
-
 // basics http://tddbin.com/#?kata=es6/language/template-strings/basics
 
 describe("A template string, is wrapped in ` (backticks) instead of ' or \"", function () {
@@ -121,6 +120,39 @@ describe("Tagged template strings, are an advanced form of template strings", fu
 
 // raw property http://tddbin.com/#?kata=es6/language/template-strings/raw
 
+describe("Use the `raw` property of tagged template strings like so `s.raw`", function () {
+  it("the `raw` property accesses the string as it was entered", function () {
+    function firstChar(strings) {
+      return strings.raw;
+    }
+    assert.equal(firstChar`\n`, "\\n");
+  });
+  it("`raw` can access the backslash of a line-break", function () {
+    function firstCharEntered(strings) {
+      const lineBreak = String(strings.raw)[0];
+      return lineBreak;
+    }
+    assert.equal(firstCharEntered`\n`, "\\");
+  });
+  describe("`String.raw` as a static function", function () {
+    it("concats the raw strings", function () {
+      const expected = "\\n";
+      assert.equal(String.raw`\n`, expected);
+    });
+    it("two raw-templates-string-backslashes equal two escaped backslashes", function () {
+      const TWO_BACKSLASHES = "\\\\";
+      assert.equal(String.raw`\\`, TWO_BACKSLASHES);
+    });
+    it("works on unicodes too", function () {
+      const smilie = "\\u{1F600}";
+      const actual = String.raw`\u{1F600}`;
+      assert.equal(actual, smilie);
+    });
+  });
+});
+
+// TDD Bin Spread Operator
+//with arrays http://tddbin.com/#?kata=es6/language/spread/with-arrays
 
 
 

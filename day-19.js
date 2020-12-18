@@ -40,3 +40,30 @@ describe("A template string, is wrapped in ` (backticks) instead of ' or \"", fu
 });
 
 // multiline http://tddbin.com/#?kata=es6/language/template-strings/multiline
+
+describe("Template string, can contain multiline content", function () {
+  it("wrap it in backticks (`) and add a newline, to span across two lines", function () {
+    var normalString = `line1\n\nline3`;
+    assert.equal(normalString, "line1\n\nline3");
+  });
+  it("even over more than two lines", function () {
+    var multiline = `\n \n \n`;
+    assert.equal(multiline.split("\n").length, 4);
+  });
+  describe("and expressions inside work too", function () {
+    var x = 42;
+    it("like simple variables", function () {
+      var multiline = `line 1\n
+      ${x}`;
+      assert.equal(multiline, "line 1\n\n      42");
+    });
+    it("also here spaces matter", function () {
+      var multiline = `\n\n${x}`;
+      assert.equal(multiline, "\n\n42");
+    });
+  });
+});
+
+// tagged template strings http://tddbin.com/#?kata=es6/language/template-strings/tagged
+
+

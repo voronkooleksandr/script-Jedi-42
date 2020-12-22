@@ -29,3 +29,32 @@ describe("Arrow functions", function () {
 });
 
 // Function binding http://tddbin.com/#?kata=es6/language/arrow-functions/binding
+
+class LexicallyBound {
+  getFunction() {
+    return () => this;
+  }
+  getArgumentsFunction() {
+    return () => arguments;
+  }
+}
+
+describe("Arrow functions have lexical `this`, no dynamic `this`", () => {
+  it("bound at definition time, use `=>`", function () {
+    const bound = new LexicallyBound();
+    const fn = bound.getFunction();
+    assert.strictEqual(fn(), bound);
+  });
+  it("can NOT bind a different context", function () {
+    const bound = new LexicallyBound();
+    const fn = bound.getFunction();
+    const anotherObj = {};
+    const expected = bound;
+    assert.strictEqual(fn.call(anotherObj), expected);
+  });
+  it("`arguments` does NOT work inside arrow functions", function () {
+    const bound = new LexicallyBound();
+    const fn = bound.getArgumentsFunction();
+    assert.equal(fn(1, 2).length, 0);
+  });
+});

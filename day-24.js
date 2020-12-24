@@ -1,8 +1,8 @@
 // Duplicate arguments http://www.codewars.com/kata/duplicate-arguments
 
-function solution(...argument) {
-  const arrayOfObject = [...argument].length;
-  const setOfObject = [...new Set(argument)].length;
+function solution(...arguments) {
+  const arrayOfObject = [...arguments].length;
+  const setOfObject = [...new Set(arguments)].length;
   return setOfObject != arrayOfObject;
 }
 

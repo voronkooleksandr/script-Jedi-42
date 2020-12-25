@@ -7,3 +7,8 @@ function solution(...arg) {
 }
 
 // Last Argument http://www.codewars.com/kata/last
+
+function last(list) {
+  const lastElement = arguments[arguments.length - 1];
+  return lastElement[lastElement.length - 1] || arguments[arguments.length - 1];
+}

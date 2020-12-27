@@ -7,3 +7,12 @@ function always(n) {
 }
 
 // Singleton pattern https://www.codewars.com/kata/singleton-pattern/train/javascript
+
+const Singleton = (function () {
+  let instance;
+  function Singleton() {
+    if (!instance) instance = this;
+    return instance;
+  }
+  return Singleton;
+})();

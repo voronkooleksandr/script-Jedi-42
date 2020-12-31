@@ -161,7 +161,6 @@ describe("An object literal can also contain setters", () => {
   });
 });
 
-
 // Class
 // Creation http://tddbin.com/#?kata=es6/language/class/creation
 
@@ -304,8 +303,44 @@ describe('Inside a class you can use the `static` keyword', () => {
   });
 });
 
-
 // Extends http://tddbin.com/#?kata=es6/language/class/extends
+
+describe('Classes can inherit from another using `extends`', () => {
+  describe('the default super class is `Object`', () => {
+    it('a `class A` is an instance of `Object`', () => {
+      class A {}
+      assert.equal(new A() instanceof Object, true);
+    });
+    it('when B extends A, B is also instance of `Object`', () => {
+      class A {}
+      class B extends A{}
+      assert.equal(new B() instanceof A, true);
+      assert.equal(new B() instanceof Object, true);
+    });
+    it('a class can extend `null`, and is not an instance of Object', () => {
+      class NullClass extends null {
+        constructor() {
+          return Object.create(null)
+        }
+      }
+      let nullInstance = new NullClass();
+      assert.equal(nullInstance instanceof Object, false);
+    });
+  });
+  describe('instance of', () => {
+    it('when B inherits from A, `new B()` is also an instance of A', () => {
+      class A {};
+      class B extends A {};
+      assert.equal(new B() instanceof A, true);
+    });
+    it('extend over multiple levels', () => {
+      class A {};
+      class B extends A{};
+      class C extends B {}
+      assert.equal(new C instanceof A, true);
+    });
+  });
+});
 
 // More Extends http://tddbin.com/#?kata=es6/language/class/more-extends
 

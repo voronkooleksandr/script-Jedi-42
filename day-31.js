@@ -41,6 +41,34 @@ describe("The object literal allows for new shorthands", () => {
 
 // Getter http://tddbin.com/#?kata=es6/language/object-literal/getter
 
+describe('An object literal can also contain getters', () => {
+  it('just prefix the property with `get` (and make it a function)', function() {
+    const obj = {
+      get x() { return 'ax'; }
+    };
+    assert.equal(obj.x, 'ax');
+  });
+  it('must have NO parameters', function() {
+    const obj = {
+      get x() { return 'ax'; }
+    };
+    assert.equal(obj.x, 'ax');
+  });
+  it('can be a computed property (an expression enclosed in `[]`)', function() {
+    const keyName = 'x';
+    const obj = {
+      get [keyName]() { return 'ax'; }
+    };
+    assert.equal(obj.x, 'ax');
+  });
+  it('can be removed using delete', function() {
+    const obj = {
+      get y() { return 'ax'; }
+    };
+    delete obj.y;
+    assert.equal(obj.x, void 0);
+  });
+
 // Setter http://tddbin.com/#?kata=es6/language/object-literal/setter
 
 // Class

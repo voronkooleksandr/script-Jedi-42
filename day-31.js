@@ -37,7 +37,44 @@ describe("The object literal allows for new shorthands", () => {
 
 // Computed Properties http://tddbin.com/#?kata=es6/language/object-literal/computed-properties
 
-
+describe("Object literal properties may be computed values", () => {
+  it("a computed property `x` needs to be surrounded by `[]`", () => {
+    const propertyName = "x";
+    const obj = { [propertyName]: 1 };
+    assert.equal(obj.x, 1);
+  });
+  it("can also get a function assigned", () => {
+    const key = "func";
+    const obj = {
+      [key]() {
+        return "seven";
+      },
+    };
+    assert.equal(obj.func(), "seven");
+  });
+  it("the key may also be the result of a function call", () => {
+    const getName = () => "propertyName";
+    const obj = {
+      ["propertyName"]() {
+        return "seven";
+      },
+    };
+    assert.equal(obj.propertyName(), "seven");
+  });
+  it("the key can also be constructed by an expression", () => {
+    const what = "tyName";
+    const obj = { ["proper" + what]: null };
+    assert("propertyName" in obj);
+  });
+  it("accessor keys can be computed names too", () => {
+    const obj = {
+      get ["key"]() {
+        return 1;
+      },
+    };
+    assert.equal(obj.key, 1);
+  });
+});
 
 // Getter http://tddbin.com/#?kata=es6/language/object-literal/getter
 
@@ -70,6 +107,8 @@ describe('An object literal can also contain getters', () => {
   });
 
 // Setter http://tddbin.com/#?kata=es6/language/object-literal/setter
+
+
 
 // Class
 // Creation http://tddbin.com/#?kata=es6/language/class/creation

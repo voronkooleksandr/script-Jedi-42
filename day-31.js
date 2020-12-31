@@ -217,6 +217,56 @@ describe("Class creation", () => {
 
 // Accessors http://tddbin.com/#?kata=es6/language/class/accessors
 
+describe("Class accessors (getter and setter)", () => {
+  it("a getter is defined like a method prefixed with `get`", () => {
+    class MyAccount {
+      get balance() {
+        return Infinity;
+      }
+    }
+    assert.equal(new MyAccount().balance, Infinity);
+  });
+  it("a setter has the prefix `set`", () => {
+    class MyAccount {
+      get balance() {
+        return this.amount;
+      }
+      set balance(amount) {
+        this.amount = amount;
+      }
+    }
+    const account = new MyAccount();
+    account.balance = 23;
+    assert.equal(account.balance, 23);
+  });
+
+  describe("dynamic accessors", () => {
+    it("a dynamic getter name is enclosed in `[]`", function () {
+      const balance = "yourMoney";
+      class YourAccount {
+        get [balance]() {
+          return -Infinity;
+        }
+      }
+      assert.equal(new YourAccount().yourMoney, -Infinity);
+    });
+    it("a dynamic setter name as well", function () {
+      const propertyName = "balance";
+      class MyAccount {
+        get [propertyName]() {
+          return this.amount;
+        }
+        set [propertyName](amount) {
+          this.amount = 23;
+        }
+      }
+      const account = new MyAccount();
+      account.balance = 7777777777777777;
+      assert.equal(account.balance, 23);
+    });
+  });
+});
+
 // Static http://tddbin.com/#?kata=es6/language/class/static
 
 // Extends http://tddbin.com/#?kata=es6/language/class/extends

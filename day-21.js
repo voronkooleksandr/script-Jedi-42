@@ -7,3 +7,8 @@ const regex = /(http:\/\/|https:\/\/)[a-z0-9.]+\.(com|net)/gi;
 const regex = /\b(\w)(\w){0,1}(\w){0,1}\w{0,1}\3\2\1\b/g;
 
 // #42: Regular Expression--(?:), (?=) and (?!) http://www.codewars.com/kata/573fb9223f9793e485000453
+
+const regex = /\d(?=(\d{3})+$)/g;
+function addCommas(money, reg) {
+  return money.replace(reg, (x) => x + ",");
+}

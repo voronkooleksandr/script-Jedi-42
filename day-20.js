@@ -24,3 +24,5 @@ function findSimilarity(string, word) {
 }
 
 // #39: Regular Expression--""?"", ""*"", ""+"" and ""{}"" https://www.codewars.com/kata/573bca07dffc1aa693000139
+
+const regex = new RegExp(/^(-?)9{1}.*0{4}$/);

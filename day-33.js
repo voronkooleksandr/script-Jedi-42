@@ -61,8 +61,43 @@ describe('`Object.is()` determines whether two values are the same', function(){
 
 //TDD Bin Reflect http://tddbin.com/#?kata=es6/language/reflect/basics
 
+describe('`Reflect` basics', function() {
+  describe('Reflect is special, it is different to e.g. `Object`', function() {
+    it('it`s of type object', function() {
+      const actualType = 'object';
+      assert.equal(actualType, typeof Reflect);
+    });
+    it('it can not be instantiated (`new Reflect()`)', function() {
+      const tryToConstruct = () => {new Reflect};
+      assert.throws(tryToConstruct, TypeError);
+    });
+    it('has no `call` method (as opposed to e.g. Object)', function() {
+      const actual = 'undefined';
+      assert.equal(actual, typeof Reflect.call);
+    });
+  });
+  
+  describe('some `Reflect` usages', function() {
+    it('`Reflect.construct()` is like `new ClassName`', function() {
+      class Class {};
+      assert.equal(Reflect.construct(Class, []) instanceof Class, true);
+    });
+    it('`Reflect.get()` returns a property`s value', function() {
+      let obj = {x: 23};
+      assert.equal(Reflect.get(obj, 'x'), 23);
+    });
+    it('`Reflect.has()` is like `in` just as a function', function() {
+      let obj = {x: 77777};
+      assert.equal(Reflect.has(obj, 'x'), true);
+    });
+  });
+});
+
 //Basics
 //Reflect.apply() http://tddbin.com/#?kata=es6/language/reflect/apply
+
+
+
 //Reflect.getPrototypeOf() http://tddbin.com/#?kata=es6/language/reflect/getprototypeof
 //Reflect.construct() http://tddbin.com/#?kata=es6/language/reflect/construct
 //Reflect.defineProperty() http://tddbin.com/#?kata=es6/language/reflect/defineproperty

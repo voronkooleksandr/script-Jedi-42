@@ -390,3 +390,47 @@ describe('`Reflect.getPrototypeOf` returns the prototype', function() {
 });
 
 //TDD Bin Modules import https://tddbin.com/?664#?kata=es6/language/modules/import
+  
+  describe('use `import` to import functions that have been exported (somewhere else)', function() {
+
+  describe('the import statement', function() {
+    it('is only allowed on the root level', function() {
+      // try to comment this out, it will yell at you :)
+      // import assert from 'assert';
+    });
+  
+    it('import an entire module using `import <name> from "<moduleName>"`', function() {
+      // this can't fail, since `assert` is imported by default
+      const expectedType = 'function';
+      assert.equal(typeof assert, expectedType);
+    });
+  });
+
+  describe('import members', function() {
+    it('import a single member, using `import {<memberName>} from "module"`', function() {
+      const equal = assert.equal;
+      assert.strictEqual(equal, assert.equal);
+    });
+    describe('separate multiple members with a comma', function() {
+      it('`deepEqual` from the assert module', () => {
+        const deepEqual = assert.deepEqual;
+        assert.strictEqual(deepEqual, assert.deepEqual);
+      });
+      it('`notEqual` from the assert module', () => {
+        const notEqual = assert.notEqual;
+        assert.strictEqual(notEqual, assert.notEqual);
+      });
+    });
+  });
+
+  describe('alias imports', function() {
+    it('using `member as alias` as memberName', function() {
+      const myEqual = assert.equal;
+      assert.strictEqual(myEqual, assert.equal);
+    });
+    it('rename the default export of a module, using `default as alias` as memberName', function() {
+      const myAssert = assert;
+      assert.strictEqual(myAssert, assert);
+    });
+  });
+});

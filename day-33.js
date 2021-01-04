@@ -96,9 +96,72 @@ describe('`Reflect` basics', function() {
 //Basics
 //Reflect.apply() http://tddbin.com/#?kata=es6/language/reflect/apply
 
+describe('`Reflect.apply` calls a target function', function() {
+  it('it is a static method', function() {
+    const actualType = 'function';
+    assert.equal(actualType, typeof Reflect.apply)
+  });
 
+  describe('the 1st parameter', () => {
+    it('is a callable, e.g. a function', () => {
+      let fn = () => 42;
+      assert.equal(Reflect.apply(fn, void 0, []), 42);
+    });
+    it('passing it a non-callable throws a TypeError', function() {
+      const applyOnUncallable = () => {
+        Reflect.apply(777777);}
+      assert.throws(applyOnUncallable, TypeError);
+    });
+  });
+
+  describe('the 2nd parameter', () => {
+    it('is the scope (or the `this`)', function() {
+      class FourtyTwo {
+        constructor() { this.value = 42}
+        fn() {return this.value}
+      }
+      let instance = new FourtyTwo();
+      const fourtyTwo = Reflect.apply(instance.fn, instance, []);
+      assert.deepEqual(fourtyTwo, 42);
+    });
+  });
+
+  describe('the 3rd parameter', () => {
+    it('must be an array (or array-like)', () => {
+      const thirdParam = [];
+      assert.doesNotThrow(() => Reflect.apply(() => void 0, null, thirdParam));
+    });
+    it('is an array of parameters passed to the call', function() {
+      let emptyArrayWithFiveElements = Reflect.apply(Array, undefined, [5]);
+      assert.deepEqual(emptyArrayWithFiveElements.fill(42), [42, 42, 42, 42, 42]);
+    });
+  });
+
+  describe('example usages', () => {
+    it('simple function call', () => {
+      const fn = () => 'the return value';
+      assert.equal(Reflect.apply(fn, void 0, []), 'the return value');
+    });
+    it('call a function on an array', () => {
+      const fn = [].slice;
+      assert.deepEqual(Reflect.apply(fn, [0, 23, 42], [1]), [23, 42]);
+    });
+    it('pass in the `this` that the function to call needs', () => {
+      class Bob {
+        constructor() { this._name = 'Bob'; }
+        name() { return this._name; }
+      }
+      const bob = new Bob();
+      const scope = bob;
+      assert.equal(Reflect.apply(bob.name, scope, []), 'Bob');
+    });
+  });
+});
 
 //Reflect.getPrototypeOf() http://tddbin.com/#?kata=es6/language/reflect/getprototypeof
+
 //Reflect.construct() http://tddbin.com/#?kata=es6/language/reflect/construct
+
 //Reflect.defineProperty() http://tddbin.com/#?kata=es6/language/reflect/defineproperty
+
 //TDD Bin Modules import https://tddbin.com/?664#?kata=es6/language/modules/import

@@ -391,6 +391,11 @@ describe('`Reflect.getPrototypeOf` returns the prototype', function() {
 
 //TDD Bin Modules import https://tddbin.com/?664#?kata=es6/language/modules/import
   
+import assert from 'assert';
+import { equal, deepEqual, notEqual } from 'assert';
+import { equal as myEqual } from "assert";
+import { default as myAssert } from "assert";
+  
   describe('use `import` to import functions that have been exported (somewhere else)', function() {
 
   describe('the import statement', function() {

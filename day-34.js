@@ -1,5 +1,16 @@
 //Adam and Eve - https://www.codewars.com/kata/basic-subclasses-adam-and-eve/
 
+class God{
+  static create(){
+    const Adam = new Man();
+    const Eve = new Woman();
+    return [Adam, Eve];
+  }
+}
+
+class Human {};
+class Man extends Human {};
+class Woman extends Human {};
 
 //Labrador - https://www.codewars.com/kata/56ff9b53140fcca90b000530/
 

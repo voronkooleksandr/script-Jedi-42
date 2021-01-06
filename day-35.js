@@ -12,4 +12,7 @@ class Animal {
   toString() {
     return `${this.name} is a ${this.type}`;
   }
+  set nameChange(newName) {
+    this.name = newName;
+  }
 }

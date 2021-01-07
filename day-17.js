@@ -35,4 +35,8 @@ function blackAndWhite(arr) {
 
 // Implement own reduce https://www.codewars.com/kata/array-number-reduce/train/javascript
 
-//I understand the task +- 80% metod of reduce() from the video but don"t be coppy/past. :). Wait this task in the next weeks!
+Array.prototype.reduce = function (process, initial) {
+  let result = initial || this.shift();
+  this.map((item, index) => (result = process(result, item, index)));
+  return result;
+};

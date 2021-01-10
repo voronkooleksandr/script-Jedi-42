@@ -82,6 +82,25 @@ describe("a Promise represents an operation that hasn`t completed yet, but is ex
 
 //creation http://tddbin.com/#?kata=es6/language/promise/creation
 
+describe('A promise can be created in multiple ways', function() {
+  describe('creating a promise fails when', function() {
+    it('using `Promise` as a function', function() {
+      function callPromiseAsFunction() { 
+       new Promise();
+      }
+      assert.throws(callPromiseAsFunction);
+    });
+    it('no parameter is passed', function() {
+      function promiseWithoutParams() {
+        new Promise({});
+      }
+      assert.throws(promiseWithoutParams);  
+    });
+    it('passing a non-callable throws too', function() {
+      const notAFunction = {};
+      assert.throws(() => { new Promise(notAFunction); });
+    });
+  });
 
 chaining `then()` http://tddbin.com/#?kata=es6/language/promise/chaining-then
 the API http://tddbin.com/#?kata=es6/language/promise/api

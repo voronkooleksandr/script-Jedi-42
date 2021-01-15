@@ -122,43 +122,71 @@ describe('Generator - `yield` is used to pause and resume a generator function',
 
 //send value to a generator http://tddbin.com/#?kata=es6/language/generator/send-value
 
-describe('Pass a value to a generator', () => {
-  it('basics: get the values from a generator in two ways', function() {
+describe("Pass a value to a generator", () => {
+  it("basics: get the values from a generator in two ways", function () {
     function* generatorFunction() {
       yield 1;
       yield 2;
     }
     // way #1
-    var convertedToAnArray = Array.from(generatorFunction());
+    let convertedToAnArray = Array.from(generatorFunction());
     // way #2
-    var iterator = generatorFunction();
-    var iteratedOver = [iterator.next().value, iterator.next().value];
+    let iterator = generatorFunction();
+    let iteratedOver = [iterator.next().value, iterator.next().value];
     assert.deepEqual(iteratedOver, convertedToAnArray);
   });
-  it('pass a value to the iterator', function() {
-    function* generatorFunction() {
-      yield 1;
-      yield 2;
-    }
-    var iterator = generatorFunction();
-    var iteratedOver = [iterator.next().value, iterator.next(2).value];
-    assert.deepEqual(iteratedOver, [1, 2]);
-  });
-  it('a value passed to the 1st `next()` call is ignored', function() {
+  it("pass a value to the iterator", function () {
     function* generatorFunction() {
       yield 1;
       yield 2;
     }
     let iterator = generatorFunction();
-    const values = [
-      iterator.next('irrelevant').value, 
-      iterator.next(2).value
-    ];
+    let iteratedOver = [iterator.next().value, iterator.next(2).value];
+    assert.deepEqual(iteratedOver, [1, 2]);
+  });
+  it("a value passed to the 1st `next()` call is ignored", function () {
+    function* generatorFunction() {
+      yield 1;
+      yield 2;
+    }
+    let iterator = generatorFunction();
+    const values = [iterator.next("irrelevant").value, iterator.next(2).value];
     assert.deepEqual(values, [1, 2]);
   });
 });
 
 //send function to a generator http://tddbin.com/#?kata=es6/language/generator/send-function
 
+describe("Pass a function to a generator", () => {
+  it("the generator can receive a function as a value", function () {
+    let fn = function () {};
+    function* generatorFunction() {
+      assert.equal(yield null, fn); // remember, don't touch this line
+    }
+    let iterator = generatorFunction();
+    iterator.next();
+    iterator.next(fn);
+  });
+  it("pass a function to the iterator, which calls it", function () {
+    function* generatorFunction() {
+      yield (yield 1, yield 2)();
+    }
+    let iterator = generatorFunction();
+    let iteratedOver = [iterator.next().value, iterator.next().value];
+    assert.deepEqual(iteratedOver, [1, 2]);
+  });
+  it("nesting yielded function calls", function () {
+    function* generatorFunction() {
+      yield yield (yield 1, yield 2, yield 3)();
+    }
+    let iterator = generatorFunction();
+    let iteratedOver = [
+      iterator.next().value,
+      iterator.next().value,
+      iterator.next().value,
+    ];
+    assert.deepEqual(iteratedOver, [1, 2, 3]);
+  });
+});
 
 //`return` inside a generator function http://tddbin.com/#?kata=es6/language/generator/return

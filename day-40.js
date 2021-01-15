@@ -257,7 +257,7 @@ describe("`return` in a generator function is special", function () {
     it('return a yielded value by "chaining" `return` and `yield`', function () {
       function* generatorFunction() {
         yield 1;
-        yield 2;
+        return 2;
       }
       const iterator = generatorFunction();
       const values = [iterator.next().value, iterator.next().value];

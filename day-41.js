@@ -12,3 +12,13 @@ function* generator() {
 }
 
 // Generators #2 https://www.codewars.com/kata/5637ead70013386e30000027/
+
+function* generator(a) {
+  let result;
+  let i = 1;
+  while (true) {
+    result = yield `${a} x ${i} = ${a * i}`;
+    i++;
+  }
+}
+

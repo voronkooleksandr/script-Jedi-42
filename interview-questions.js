@@ -6,3 +6,14 @@ function reverseNumber(n) {
   return parseInt(n.toString().split("").reverse().join("")) * Math.sign(n);
 }
 
+// 2. https://www.codewars.com/kata/52c31f8e6605bcc646000082/train/javascript
+
+function twoSum(numbers, target) {
+  for (let i = 0; i <= numbers.length; i++) {
+    for (let k = 1; k <= numbers.length; k++) {
+      if ((target - numbers[k]) === numbers[i]) {
+        return [k,i]
+      }
+    }
+  }
+}

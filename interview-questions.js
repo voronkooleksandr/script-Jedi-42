@@ -19,3 +19,20 @@ function twoSum(numbers, target) {
     }
   }
 }
+
+// 3. https://www.codewars.com/kata/52756e5ad454534f220001ef/train/javascript
+// Longest Common Subsequence
+
+function LCS(x, y) {
+  let string = "";
+  let n = 0;
+  for (let i = 0; i < y.length; i++) {
+    for (let k = n; k < x.length; k++)
+      if (y[i] === x[k]) {
+        string += y[i];
+        n = ++k;
+        break;
+      }
+  }
+  return string;
+}
